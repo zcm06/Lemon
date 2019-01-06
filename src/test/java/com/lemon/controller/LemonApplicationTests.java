@@ -1,4 +1,4 @@
-package com.lemon.lemon;
+package com.lemon.controller;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
