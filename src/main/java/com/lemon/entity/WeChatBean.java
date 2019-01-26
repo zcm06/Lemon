@@ -42,7 +42,7 @@ public class WeChatBean {
     }
 
     public void setCode(String code)throws Exception{
-        url = url + "?code=" + code + "&appid=" + appId + "&secret" + appSecret + "&grant_type" + grant_type;
+        url = url + "?js_code=" + code + "&appid=" + appId + "&secret=" + appSecret + "&grant_type=" + grant_type;
         RestTemplate restTemplate = new RestTemplate();
         //进行网络请求,访问url接口
         ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.GET, null, String.class);
