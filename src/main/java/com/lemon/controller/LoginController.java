@@ -1,5 +1,7 @@
 package com.lemon.controller;
 
+import com.lemon.dao.UserRepository;
+import com.lemon.entity.User;
 import com.lemon.entity.WeChatBean;
 import com.lemon.utils.WeChatConfigUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,8 @@ public class LoginController {
 
     @Autowired
     private WeChatConfigUtil configUtil;
+    @Autowired
+    private UserRepository userRepository;
 
     @RequestMapping("/login")
     @ResponseBody

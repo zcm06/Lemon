@@ -1,18 +1,32 @@
 package com.lemon.entity;
 
+import org.springframework.data.annotation.Id;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import java.util.Date;
 
+@Entity
 public class User {
+
+	@Id
+	@GeneratedValue
 	private String userId;
 
+	@Column(name = "userName", nullable = true, length = 40)
 	private String userName;
 
+	@Column(name = "birthday", nullable = true, length = 40)
 	private Date birthday;
 
+	@Column(name = "gender", nullable = true, length = 20)
 	private String gender;
 
+	@Column(name = "openId", nullable = true, length = 40)
 	private String openId;
 
+	@Column(name = "createTime", nullable = true, length = 40)
 	private Date createTime;
 
 	public String getUserId() {
@@ -61,17 +75,5 @@ public class User {
 
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
-	}
-
-	@Override
-	public String toString() {
-		return "User{" +
-				"userId='" + userId + '\'' +
-				", userName='" + userName + '\'' +
-				", birthday=" + birthday +
-				", gender='" + gender + '\'' +
-				", openId='" + openId + '\'' +
-				", createTime=" + createTime +
-				'}';
 	}
 }
