@@ -1,39 +1,36 @@
 package com.lemon.entity;
 
-import org.springframework.data.annotation.Id;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name="lemon_user")//设置数据库中表名字
 public class User {
 
 	@Id
-	@GeneratedValue
-	private String userId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long userId;
 
-	@Column(name = "userName", nullable = true, length = 40)
+	@Column(name = "USER_NAME", nullable = true, length = 40)
 	private String userName;
 
-	@Column(name = "birthday", nullable = true, length = 40)
+	@Column(name = "BIRTHDAY", nullable = true, length = 40)
 	private Date birthday;
 
-	@Column(name = "gender", nullable = true, length = 20)
+	@Column(name = "GENDER", nullable = true, length = 20)
 	private String gender;
 
-	@Column(name = "openId", nullable = true, length = 40)
+	@Column(name = "OPEN_ID", nullable = true, length = 40)
 	private String openId;
 
-	@Column(name = "createTime", nullable = true, length = 40)
+	@Column(name = "CREATE_TIME", nullable = true, length = 40)
 	private Date createTime;
 
-	public String getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 

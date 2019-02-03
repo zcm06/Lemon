@@ -3,8 +3,7 @@ server:
 
 spring:
   datasource:
-    name: test
-    url: jdbc:mysql://127.0.0.1:3306/lemon
+    url: jdbc:mysql://127.0.0.1:3306/lemon?useSSL=false
     username: root
     password: zhang123
     # 使用druid数据源
@@ -24,10 +23,15 @@ spring:
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
     jpa:
-      hibernate:
-        ddl-auto: update //自动更新
-      show-sql: true  //日志中显示sql语句
-
+      # 配置 DBMS 类型
+      database: MYSQL
+      # 配置是否将执行的 SQL 输出到日志
+      show-sql: true
+      properties:
+        hibernate:
+          hbm2ddl:
+            # 配置开启自动更新表结构
+            auto: update
 
 app-config:
   url: https://api.weixin.qq.com/sns/jscode2session

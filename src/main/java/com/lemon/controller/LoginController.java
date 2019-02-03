@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/loginController")
@@ -37,6 +38,9 @@ public class LoginController {
             weChatBean.setUrl(configUtil.getUrl());
             weChatBean.setCode(code);
             map.put("openid",weChatBean.getOpenId());
+            User user= new User();
+            user.setOpenId(weChatBean.getOpenId());
+            userRepository.save(user);
             request.getSession().setAttribute("session_key",weChatBean.getSessionKey());
         }catch (Exception e){
             e.printStackTrace();
