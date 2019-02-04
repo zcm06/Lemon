@@ -47,7 +47,6 @@ public class WeChatBean {
         //进行网络请求,访问url接口
         ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.GET, null, String.class);
         String data = responseEntity.getBody();
-        System.out.println(data);
         JSONObject jsonObject = JSON.parseObject(data.toString());
         this.openId = (String) jsonObject.get("openid");
         this.sessionKey = (String) jsonObject.get("session_key");
