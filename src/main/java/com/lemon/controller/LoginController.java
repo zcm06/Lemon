@@ -4,6 +4,7 @@ import com.lemon.dao.UserRepository;
 import com.lemon.entity.QueryResult;
 import com.lemon.entity.User;
 import com.lemon.entity.WeChatBean;
+import com.lemon.service.UserService;
 import com.lemon.utils.ControllerUtil;
 import com.lemon.utils.Func;
 import com.lemon.utils.WeChatConfigUtil;
@@ -29,11 +30,11 @@ public class LoginController {
     @Autowired
     private WeChatConfigUtil configUtil;
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @RequestMapping("/login")
     @ResponseBody
-    public QueryResult login(HttpServletRequest request, HttpServletResponse response, @RequestParam("code") String code){
+    public QueryResult login(HttpServletRequest request, HttpServletResponse response, @RequestParam("code") String code) {
         QueryResult queryResult = new QueryResult();
         try {
             WeChatBean weChatBean = new WeChatBean();
@@ -43,21 +44,18 @@ public class LoginController {
             weChatBean.setUrl(configUtil.getUrl());
             weChatBean.setCode(code);
             String openId = weChatBean.getOpenId();
-            if (Func.checkNullOrEmpty(openId)){
+            if (Func.checkNullOrEmpty(openId)) {
                 return ControllerUtil.getFailResult("获取用户信息异常");
             }
             queryResult.setResult(openId);
             User user = new User();
             user.setOpenId(openId);
-            Example<User> example = Example.of(user);
-            Optional<User> optional= userRepository.findOne(example);
-            if (Func.checkNullOrEmpty(optional.get())){
-                userRepository.save(user);
-            }
-            request.getSession().setAttribute("session_key",weChatBean.getSessionKey());
-        }catch (Exception e){
+            userService.findOne(user);
+            queryResult.setResult(user);
+            request.getSession().setAttribute("session_key", weChatBean.getSessionKey());
+        } catch (Exception e) {
             e.printStackTrace();
-            return ControllerUtil.getFailResult("获取用户信息异常");
+            return ControllerUtil.getFailResult("获取用户信息异常!" + e.getMessage());
         }
         return queryResult;
     }
