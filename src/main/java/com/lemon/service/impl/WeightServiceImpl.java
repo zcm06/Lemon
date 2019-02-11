@@ -6,9 +6,11 @@ import com.lemon.service.WeightService;
 import com.lemon.utils.Func;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class WeightServiceImpl implements WeightService {
 
     @Autowired

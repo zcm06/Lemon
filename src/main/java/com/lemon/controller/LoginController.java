@@ -1,6 +1,5 @@
 package com.lemon.controller;
 
-import com.lemon.dao.UserRepository;
 import com.lemon.entity.QueryResult;
 import com.lemon.entity.User;
 import com.lemon.entity.WeChatBean;
@@ -9,19 +8,13 @@ import com.lemon.utils.ControllerUtil;
 import com.lemon.utils.Func;
 import com.lemon.utils.WeChatConfigUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
 
 /**
  * 登陆controller

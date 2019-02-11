@@ -3,7 +3,6 @@ package com.lemon.service;
 import com.lemon.entity.Weight;
 import org.springframework.stereotype.Service;
 
-@Service
 public interface WeightService {
 
     /** 

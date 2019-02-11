@@ -3,7 +3,7 @@ package com.lemon.service;
 import com.lemon.entity.User;
 import org.springframework.stereotype.Service;
 
-@Service
+
 public interface UserService {
 
     /** 
