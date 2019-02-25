@@ -26,6 +26,17 @@ public class User {
 	@Column(name = "CREATE_TIME", nullable = true, length = 40)
 	private Date createTime;
 
+	@Column(name = "AVATAR_URL", nullable = true, length = 1000)
+	private String avatarUrl;
+
+	public String getAvatarUrl() {
+		return avatarUrl;
+	}
+
+	public void setAvatarUrl(String avatarUrl) {
+		this.avatarUrl = avatarUrl;
+	}
+
 	public Long getUserId() {
 		return userId;
 	}

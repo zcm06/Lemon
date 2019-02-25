@@ -33,4 +33,17 @@ public class UserServiceImpl implements UserService {
         }
         return userRepository.save(user);
     }
+
+    @Override
+    public User findUserByOpenId(String openId) throws Exception {
+        if (Func.checkNullOrEmpty(openId)) {
+            throw new Exception("参数为空！");
+        }
+        return  userRepository.findUserByOpenId(openId);
+    }
+
+    @Override
+    public User updateUser(User user) throws Exception {
+        return userRepository.saveAndFlush(user);
+    }
 }
